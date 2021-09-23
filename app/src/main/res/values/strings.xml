@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Political Preparedness</string>
+    <string name="logo_img_description">Ballot image</string>
+    <string name="profile_img_description">Profile image</string>
+    <string name="twitter_description">Twitter link</string>
+    <string name="facebook_description">Facebook link</string>
+    <string name="www_description">Internet link</string>
+
+    <string name="upcoming_elections_header">Upcoming Elections</string>
+    <string name="saved_elections_header">Saved Elections</string>
+    <string name="election_information_title">Election Information</string>
+
+    <string name="upcoming_elections_btn_text">Upcoming Elections</string>
+    <string name="find_representatives_btn_text">Find my Representatives</string>
+    <string name="follow_election_btn_text">Follow Election</string>
+    <string name="unfollow_election_btn_text">Unfollow Election</string>
+
+    <string name="state_correspondence">State Correspondence</string>
+
+    <string name="voting_locations_link">Voting Locations</string>
+    <string name="ballot_information_link">Ballot Information</string>
+
+    <string name="voter_info_error">There is no information for this election.</string>
+
+    <string name="representative_search_title">Representative Search</string>
+    <string name="address_line_1">Address line 1</string>
+    <string name="address_line_2">Address line 2</string>
+    <string name="city">City</string>
+    <string name="zip">Zip</string>
+    <string name="find_representatives_btn">Find my Representatives</string>
+    <string name="use_location_btn">Use my Location</string>
+    <string name="my_representatives_title">My Representatives</string>
+
+    <string name="permission_denied_explanation">LocationPermission has not been granted.</string>
+    <string name="settings">Settings</string>
+
+</resources>
