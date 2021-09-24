@@ -5,22 +5,40 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.android.politicalpreparedness.databinding.FragmentElectionBinding
+import com.example.android.politicalpreparedness.election.adapter.ElectionListAdapter
+import com.example.android.politicalpreparedness.election.adapter.ElectionListener
 
-class ElectionsFragment: Fragment() {
+class ElectionsFragment : Fragment() {
 
-    private lateinit var viewModel : ElectionsViewModel
+    private val viewModel: ElectionsViewModel by lazy {
+        val activity = requireNotNull(this.activity)
+        ViewModelProvider(this, ElectionsViewModelFactory(activity.application)).get(
+            ElectionsViewModel::class.java
+        )
+    }
 
-    override fun onCreateView(inflater: LayoutInflater,
-                              container: ViewGroup?,
-                              savedInstanceState: Bundle?): View? {
-
-        //TODO: Add ViewModel values and create ViewModel
-        //viewModel = ViewModelProvider(this, ElectionsViewModel.Fac)
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
 
         val binding = FragmentElectionBinding.inflate(inflater)
         binding.lifecycleOwner = this
+
+        binding.vm = viewModel
+        val upcomingElectionsAdapter = ElectionListAdapter(ElectionListener {
+
+        })
+        binding.upcomingElectionsRecycler.adapter = upcomingElectionsAdapter
+        viewModel.upcomingElections.observe(viewLifecycleOwner, {
+            it?.let {
+                upcomingElectionsAdapter.submitList(it)
+            }
+        })
 
         //TODO: Link elections to voter info
 
