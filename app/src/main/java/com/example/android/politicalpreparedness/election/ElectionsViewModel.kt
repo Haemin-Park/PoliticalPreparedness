@@ -22,6 +22,7 @@ class ElectionsViewModel(application: Application): AndroidViewModel(application
     }
 
     val upcomingElections = repository.elections
+    val followedElections = repository.followedElections
 
     //TODO: Create live data val for saved elections
 
