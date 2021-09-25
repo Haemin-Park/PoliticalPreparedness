@@ -16,7 +16,6 @@ import com.example.android.politicalpreparedness.databinding.FragmentVoterInfoBi
 import com.google.android.material.snackbar.Snackbar
 
 class VoterInfoFragment : Fragment() {
-
     private val viewModel: VoterInfoViewModel by lazy {
         val args: VoterInfoFragmentArgs by navArgs()
         val activity = requireNotNull(this.activity)
@@ -24,27 +23,35 @@ class VoterInfoFragment : Fragment() {
             this, VoterInfoViewModelFactory(args, activity.application)
         ).get(VoterInfoViewModel::class.java)
     }
+    private lateinit var binding: FragmentVoterInfoBinding
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val binding = FragmentVoterInfoBinding.inflate(layoutInflater)
+        binding = FragmentVoterInfoBinding.inflate(layoutInflater)
         binding.lifecycleOwner = this
         binding.vm = viewModel
 
         viewModel.hasVoterInfo.observe(viewLifecycleOwner, { hasInfo ->
             if (hasInfo) {
-                showVoterInfo(binding)
+                showVoterInfo()
             } else {
-                hideVoterInfo(binding)
+                hideVoterInfo()
+                setInfoText("No Information")
                 Snackbar.make(requireView(), R.string.voter_info_error, Snackbar.LENGTH_LONG).show()
             }
         })
 
         viewModel.networkError.observe(viewLifecycleOwner, {
-            Toast.makeText(activity?.application, "Network Error, Can't load information", Toast.LENGTH_SHORT).show()
+            Toast.makeText(
+                activity?.application,
+                "Network Error, Can't load information",
+                Toast.LENGTH_SHORT
+            ).show()
+            hideVoterInfo()
+            setInfoText("Network Error")
         })
 
         viewModel.votingLocationsUrl.observe(viewLifecycleOwner, { url ->
@@ -66,18 +73,30 @@ class VoterInfoFragment : Fragment() {
         startActivity(Intent(ACTION_VIEW, Uri.parse(url)))
     }
 
-    private fun showVoterInfo(binding: FragmentVoterInfoBinding) {
-        binding.stateHeader.visibility = View.VISIBLE
-        binding.stateLocations.visibility = View.VISIBLE
-        binding.stateBallot.visibility = View.VISIBLE
-        binding.followElectionButton.visibility = View.VISIBLE
+    private fun showVoterInfo() {
+        binding.run {
+            stateHeader.visibility = View.VISIBLE
+            stateLocations.visibility = View.VISIBLE
+            stateBallot.visibility = View.VISIBLE
+            followElectionButton.visibility = View.VISIBLE
+            ivInfo.visibility = View.INVISIBLE
+            tvInfo.visibility = View.INVISIBLE
+        }
     }
 
-    private fun hideVoterInfo(binding: FragmentVoterInfoBinding) {
-        binding.stateHeader.visibility = View.GONE
-        binding.stateLocations.visibility = View.GONE
-        binding.stateBallot.visibility = View.GONE
-        binding.followElectionButton.visibility = View.GONE
+    private fun hideVoterInfo() {
+        binding.run {
+            stateHeader.visibility = View.GONE
+            stateLocations.visibility = View.GONE
+            stateBallot.visibility = View.GONE
+            stateCorrespondenceHeader.visibility = View.GONE
+            followElectionButton.visibility = View.GONE
+            ivInfo.visibility = View.VISIBLE
+            tvInfo.visibility = View.VISIBLE
+        }
     }
 
+    private fun setInfoText(text: String) {
+        binding.tvInfo.text = text
+    }
 }
