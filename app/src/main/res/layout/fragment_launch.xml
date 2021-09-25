@@ -6,7 +6,6 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:padding="@dimen/default_padding"
         tools:context="com.example.android.politicalpreparedness.MainActivity">
 
         <ImageView
@@ -21,23 +20,21 @@
 
         <Button
             android:id="@+id/upcoming_button"
+            style="@style/buttonStyle"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/default_margin"
-            android:background="@color/colorPrimaryDark"
+            android:layout_marginBottom="@dimen/small_margin"
             android:text="@string/upcoming_elections_btn_text"
-            android:textColor="@color/white"
             app:layout_constraintBottom_toTopOf="@+id/representative_button"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
 
         <Button
             android:id="@+id/representative_button"
+            style="@style/buttonStyle"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:background="@color/colorPrimaryDark"
             android:text="@string/find_representatives_btn_text"
-            android:textColor="@color/white"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />

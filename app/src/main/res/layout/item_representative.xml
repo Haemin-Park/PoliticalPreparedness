@@ -12,14 +12,14 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="88dp">
+        android:layout_height="90dp">
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            app:layout_constraintGuide_begin="28dp" />
+            app:layout_constraintGuide_begin="30dp" />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline2"
@@ -33,12 +33,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            app:layout_constraintGuide_begin="68dp" />
+            app:layout_constraintGuide_begin="70dp" />
 
         <ImageView
             android:id="@+id/representative_photo"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
             android:layout_marginStart="@dimen/default_margin"
             android:layout_marginTop="@dimen/default_margin"
             android:contentDescription="@string/profile_img_description"
@@ -50,8 +50,9 @@
             android:id="@+id/office_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@{representative.office.name}"
             android:layout_marginStart="@dimen/default_margin"
+            android:text="@{representative.office.name}"
+            android:textStyle="bold"
             app:layout_constraintBottom_toTopOf="@+id/guideline"
             app:layout_constraintStart_toEndOf="@+id/representative_photo"
             tools:text="Three line item" />

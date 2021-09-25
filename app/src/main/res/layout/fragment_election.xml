@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
             name="vm"
             type="com.example.android.politicalpreparedness.election.ElectionsViewModel" />
@@ -16,8 +17,10 @@
 
         <TextView
             android:id="@+id/upcoming_header"
+            style="@style/headerStyle"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/default_margin"
             android:text="@string/upcoming_elections_header"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -36,6 +39,7 @@
 
         <TextView
             android:id="@+id/saved_header"
+            style="@style/headerStyle"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/default_margin"
@@ -48,7 +52,7 @@
             android:id="@+id/followed_elections_recycler"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/xlarge_margin"
+            android:layout_marginTop="@dimen/default_margin"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

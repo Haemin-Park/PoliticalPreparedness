@@ -12,9 +12,10 @@
         <import type="android.view.View" />
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:orientation="vertical"
         tools:context="com.example.android.politicalpreparedness.MainActivity">
 
         <androidx.appcompat.widget.Toolbar
@@ -32,25 +33,24 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/default_margin"
+            android:layout_marginBottom="@dimen/xlarge_margin"
             android:text="@{vm.voterInfo.election.electionDay.toString()}"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/election_name"
+            android:textStyle="bold"
             tools:text="12 November 2055" />
 
         <TextView
             android:id="@+id/state_header"
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/default_margin"
             android:text="@string/election_information_title"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/election_date" />
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/state_locations"
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/default_margin"
             android:onClick="@{() -> vm.loadVotingLocations()}"
             android:text="@string/voting_locations_link"
             app:layout_constraintEnd_toEndOf="parent"
@@ -59,8 +59,9 @@
 
         <TextView
             android:id="@+id/state_ballot"
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/default_margin"
             android:onClick="@{() -> vm.loadBallotInformation()}"
             android:text="@string/ballot_information_link"
             app:layout_constraintEnd_toEndOf="parent"
@@ -69,15 +70,17 @@
 
         <androidx.constraintlayout.widget.Group
             android:id="@+id/address_group"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/default_margin"
             android:visibility="@{vm.hasCorrespondenceAddress ? View.VISIBLE : View.GONE}"
             app:constraint_referenced_ids="state_correspondence_header,address" />
 
         <TextView
             android:id="@+id/state_correspondence_header"
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/default_margin"
             android:text="@string/state_correspondence"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -87,23 +90,25 @@
             android:id="@+id/address"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/default_margin"
             android:text="@{vm.correspondenceAddress}"
             app:layout_constraintStart_toStartOf="@id/election_date"
             app:layout_constraintTop_toBottomOf="@id/state_correspondence_header"
             tools:text="Formatted correspondence address" />
 
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
         <Button
             android:id="@+id/follow_election_button"
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@{vm.isElectionFollowed() ? @color/red : @color/colorPrimaryDark}"
             android:onClick="@{() -> vm.toggleFollowElection()}"
-            android:layout_marginStart="@dimen/default_margin"
-            android:layout_marginEnd="@dimen/default_margin"
-            android:layout_marginBottom="@dimen/default_margin"
             android:text="@{vm.isElectionFollowed() ? @string/unfollow_election_btn_text : @string/follow_election_btn_text}"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
+            android:textColor="@color/white"
             tools:text="Follow Election" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    </LinearLayout>
 </layout>

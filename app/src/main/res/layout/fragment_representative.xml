@@ -29,6 +29,7 @@
 
             <TextView
                 android:id="@+id/search_title"
+                style="@style/headerStyle"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:text="@string/representative_search_title"
@@ -98,10 +99,9 @@
 
             <Button
                 android:id="@+id/button_search"
+                style="@style/buttonStyle"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginHorizontal="@dimen/default_margin"
-                android:layout_marginVertical="@dimen/small_margin"
                 android:text="@string/find_representatives_btn"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -109,10 +109,9 @@
 
             <Button
                 android:id="@+id/button_location"
+                style="@style/buttonStyle"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginHorizontal="@dimen/default_margin"
-                android:layout_marginVertical="@dimen/small_margin"
                 android:text="@string/use_location_btn"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -130,6 +129,7 @@
 
             <TextView
                 android:id="@+id/representative_title"
+                style="@style/headerStyle"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:text="@string/my_representatives_title"

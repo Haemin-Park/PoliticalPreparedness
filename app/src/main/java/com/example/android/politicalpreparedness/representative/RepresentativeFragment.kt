@@ -62,8 +62,8 @@ class DetailFragment : Fragment() {
         })
 
         binding.buttonSearch.setOnClickListener {
-            hideKeyboard()
             viewModel.getRepresentatives()
+            hideKeyboard()
         }
 
         binding.buttonLocation.setOnClickListener {
@@ -74,21 +74,18 @@ class DetailFragment : Fragment() {
             }
         }
 
-        binding.state.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-            override fun onItemSelected(
-                parent: AdapterView<*>?,
-                view: View?,
-                position: Int,
-                id: Long
-            ) {
-                viewModel.address.value?.state = binding.state.selectedItem.toString()
-            }
+        binding.state.onItemSelectedListener =
+            object : AdapterView.OnItemSelectedListener {
+                override fun onItemSelected(
+                    parent: AdapterView<*>?, view: View?, position: Int, id: Long
+                ) {
+                    (parent?.getItemAtPosition(position) as String?)?.let { state ->
+                        viewModel.address.value?.state = state
+                    }
+                }
 
-            override fun onNothingSelected(parent: AdapterView<*>?) {
-                viewModel.address.value?.state = binding.state.selectedItem.toString()
+                override fun onNothingSelected(parent: AdapterView<*>?) {}
             }
-
-        }
 
         return binding.root
     }
